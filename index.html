@@ -684,7 +684,7 @@
                         <h3 class="contact-title">ENVOYER MOI MESSAGE !</h3>
                     </div>
                     <div class="col-lg-8">
-                        <form class="form-contact contact_form" action="" method="" id="contactForm" novalidate="novalidate">
+                        <form onsubmit="sendEmail(); reset(); return false;" class="form-contact contact_form"  id="contactForm">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
@@ -787,24 +787,22 @@
 	   <script>
 		   const form = document.querySelector('.contact_form'),
 			 
-		   function sendMsg(e){
-			e.preventDefault();
-			const name = document.querySelector('.name'),
-				email = document.querySelector('.email'),
-				message = document.querySelector('.message');
-
+		   function sendEmail(){
 			Email.send({
-			    SecureToken : "41aac6dd-a537-4481-8759-a111db326294",
-			    To : 'labofarid22@gmail.com',
-			    From : email.value,
-			    Subject : "PORTFOLIO Contact Form",
-			    Body : message.value
+			    Host : "smtp.gmail.com",
+			    Username : "elfariid22@gmail.com",
+			    Password : "AoUd06elii22",
+			    To : 'labofariid22@gmail.com',
+			    From : document.querySelector(".email").value,
+			    Subject : "New PORTFOLIO Contact Form Enquiry",
+			    Body : "Name : " + document.getElementById("name").value
+				+ "<br> Email : " + document.getElementById("email").value
+				+ "<br> Message : " + document.getElementById("message").value
 			}).then(
-			  message => alert(message)
+			  message => alert("Message Envoyer")
 			);
 		   }
-		   
-		   form.addEventListener('submit', sendMsg);
+		 
 	   </script>
 	   
 		<!-- All JS Custom Plugins Link Here here -->
