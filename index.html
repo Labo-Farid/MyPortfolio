@@ -780,6 +780,33 @@
     </div>
 
     <!-- JS here -->
+	   
+	   <!-- SMTP JS -->
+	   <script src="https://smtpjs.com/v3/smtp.js"></script>
+	   
+	   <script>
+		   const form = document.querySelector('.contact_form'),
+			 
+		   function sendMsg(e){
+			e.preventDefault();
+				name = document.querySelector('.name'),
+				email = document.querySelector('.email'),
+				message = document.querySelector('.message');
+
+			Email.send({
+			    SecureToken : "41aac6dd-a537-4481-8759-a111db326294",
+			    To : 'labofarid22@gmail.com',
+			    From : email.value,
+			    Subject : "PORTFOLIO Contact Form",
+			    Body : message.value
+			}).then(
+			  message => alert(message)
+			);
+		   }
+		   
+		   form.addEventListener('submit', sendMsg);
+	   </script>
+	   
 		<!-- All JS Custom Plugins Link Here here -->
         <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
 		<!-- Jquery, Popper, Bootstrap -->
